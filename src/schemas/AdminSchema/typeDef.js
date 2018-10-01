@@ -20,5 +20,6 @@ module.exports = `
         mail_address: String,
         password: String,
         user_name: String,
+        role: Role
     }
 `;

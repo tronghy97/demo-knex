@@ -1,11 +1,18 @@
 const knex = require('../../connectors');
 var bookshelf = require('bookshelf')(knex);
 var Admin = bookshelf.Model.extend({
-    tableName: 'admins'
+    tableName: 'admins',
+    role: function() {
+        return this.belongsTo(Role);
+    }
+});
+
+var Role = bookshelf.Model.extend({
+    tableName: 'roles'
 });
 
 module.exports = {
-    getAllAdmins: () => Admin.fetchAll().then(function(models) {
+    getAllAdmins: () => Admin.fetchAll({withRelated: ['role']}).then(function(models) {
         return models.serialize();
     }),
     createAdmin: input => {

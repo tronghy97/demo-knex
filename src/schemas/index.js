@@ -10,6 +10,10 @@ const {
     resolver: AdminResolver
 } = require('./AdminSchema');
 
+const {
+    typeDef: Role
+} = require('./RoleSchema');
+
 const DefaultSchema = `
     type Query {
         _empty: String
@@ -21,6 +25,6 @@ const DefaultSchema = `
 `;
 
 module.exports = {
-    typeDefs: [DefaultSchema, Member, Admin],
+    typeDefs: [DefaultSchema, Member, Role, Admin],
     resolvers: merge(MemberResolver, AdminResolver)
 };
