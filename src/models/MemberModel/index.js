@@ -1,24 +1,24 @@
 const knex = require('../../connectors');
 
 module.exports = {
-    getAllMembers: () => knex('tbl_members').select(),
+    getAllMembers: () => knex('members').select(),
     createMember: input => {
         if (input) {
-            return knex('tbl_members').insert(input).then(function(result) {
-                return knex('tbl_members').where('id', result[0]).first();
+            return knex('members').insert(input).then(function(result) {
+                return knex('members').where('id', result[0]).first();
             });
         }
         return false;
     },
     deleteMember: id => {
         if (id) {
-            return knex('tbl_members').where('id', id).update('deleted_at', new Date());
+            return knex('members').where('id', id).del();
         }
         return false;
     },
     updateMember: (id, input) => {
         if (id) {
-            return knex('tbl_members').where('id', id).update(input);
+            return knex('members').where('id', id).update(input);
         }
         return false;
     }

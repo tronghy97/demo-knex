@@ -1,15 +1,7 @@
-const { MYSQL_PORT } = require('../constants/Config');
+const config = require('../constants/Config');
+const database = require('../database/knexfile.js');
 
-const knex = require('knex')({
-    client: 'mysql',
-    connection: {
-        host : '127.0.0.1',
-        port: MYSQL_PORT,
-        user : 'root',
-        password : 'root',
-        database : 'chatty'
-    }
-});
+const knex = require('knex')(database[config.evironment]);
 
 module.exports = knex
 

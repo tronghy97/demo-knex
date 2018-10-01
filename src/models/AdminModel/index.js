@@ -1,7 +1,7 @@
 const knex = require('../../connectors');
 var bookshelf = require('bookshelf')(knex);
 var Admin = bookshelf.Model.extend({
-    tableName: 'tbl_admins'
+    tableName: 'admins'
 });
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
     },
     deleteAdmin: id => {
         if (id) {
-            return Admin.where('id', id).set('deleted_at', new Date()).save(null, {method: 'update'});
+            return Admin.where('id', id).del();
         }
         return false;
     },
