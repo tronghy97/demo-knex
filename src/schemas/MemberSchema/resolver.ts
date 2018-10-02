@@ -1,4 +1,4 @@
-import { MemberModel } from '../../models/MemberModel';
+import { MemberModel } from '../../models/member';
 
 export const resolver = {
     Query: {

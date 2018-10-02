@@ -1,4 +1,4 @@
-import { knex } from '../../connectors';
+import { knex } from '../connectors';
 
 var bookshelf = require('bookshelf')(knex);
 var Admin = bookshelf.Model.extend({
@@ -30,7 +30,7 @@ class AdminM {
 
     deleteAdmin(id: number) {
         if (id) {
-            return Admin.where('id', id).del();
+            return Admin.where('id', id).destroy();
         }
         return false;
     }

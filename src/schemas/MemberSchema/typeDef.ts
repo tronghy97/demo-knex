@@ -7,7 +7,7 @@ export const typeDef = `
         createMember(input: MemberInput): Member
         deleteMember(id: ID!): Boolean
         updateMember(id: ID!, input: MemberInput): Boolean
-        insertMembers(input: [MemberInput]): [Member]
+        insertMembers(input: [MemberInput]): Boolean
     }
 
     input MemberInput {

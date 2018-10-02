@@ -1,4 +1,4 @@
-import { AdminModel } from '../../models/AdminModel';
+import { AdminModel } from '../../models/admin';
 
 export const resolver = {
     Query: {

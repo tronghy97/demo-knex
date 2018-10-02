@@ -13,6 +13,7 @@ export const typeDef = `
         mail_address: String,
         password: String,
         user_name: String,
+        role_id: Int
     }
 
     type Admin {

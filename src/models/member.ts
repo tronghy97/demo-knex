@@ -1,4 +1,4 @@
-import { knex } from '../../connectors';
+import { knex } from '../connectors';
 import * as promise from 'bluebird';
 
 class Member {
@@ -41,8 +41,9 @@ class Member {
             console.log(inserts.length);
           })
           .catch(function(error) {
+            console.log("rollback db");
             console.error(error);
-            throw error;
+            return false;
           });
     }
 }
