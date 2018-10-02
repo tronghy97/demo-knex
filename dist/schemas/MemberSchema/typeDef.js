@@ -1,4 +1,6 @@
-module.exports = `
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typeDef = `
     extend type Query {
         getAllMembers: [Member]
     }
@@ -21,3 +23,4 @@ module.exports = `
         nickname: String,
     }
 `;
+//# sourceMappingURL=typeDef.js.map

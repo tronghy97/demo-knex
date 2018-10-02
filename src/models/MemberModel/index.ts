@@ -1,30 +1,36 @@
-const knex = require('../../connectors');
-const promise = require('bluebird');
+import { knex } from '../../connectors';
+import * as promise from 'bluebird';
 
-module.exports = {
-    getAllMembers: () => knex('members').select(),
-    createMember: input => {
+class Member {
+    getAllMembers() {
+        return knex('members').select();
+    }
+
+    createMember(input: object) {
         if (input) {
             return knex('members').insert(input).then(function(result) {
                 return knex('members').where('id', result[0]).first();
             });
         }
         return false;
-    },
-    deleteMember: id => {
+    }
+
+    deleteMember(id: number) {
         if (id) {
             return knex('members').where('id', id).del();
         }
         return false;
-    },
-    updateMember: (id, input) => {
+    }
+
+    updateMember(id: number, input: object) {
         if (id) {
             return knex('members').where('id', id).update(input);
         }
         return false;
-    },
-    insertMembers: members => {
-        knex.transaction((trans) => {
+    }
+
+    insertMembers(members: object[]) {
+        return knex.transaction((trans) => {
             promise.map(members, (member) => {
                 return knex.insert(member).into('members').transacting(trans);
             })
@@ -38,5 +44,8 @@ module.exports = {
             console.error(error);
             throw error;
           });
-    },
+    }
 }
+
+
+export const MemberModel = new Member();

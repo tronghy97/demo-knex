@@ -1,4 +1,6 @@
-module.exports = `
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typeDef = `
     extend type Query {
         getAllAdmins: [Admin]
     }
@@ -23,3 +25,4 @@ module.exports = `
         role: Role
     }
 `;
+//# sourceMappingURL=typeDef.js.map

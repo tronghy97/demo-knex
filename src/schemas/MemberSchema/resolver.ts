@@ -1,6 +1,6 @@
-const MemberModel = require('../../models/MemberModel');
+import { MemberModel } from '../../models/MemberModel';
 
-module.exports = {
+export const resolver = {
     Query: {
         getAllMembers: () => MemberModel.getAllMembers(),
     },

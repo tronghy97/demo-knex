@@ -1,4 +1,5 @@
-const knex = require('../../connectors');
+import { knex } from '../../connectors';
+
 var bookshelf = require('bookshelf')(knex);
 var Admin = bookshelf.Model.extend({
     tableName: 'admins',
@@ -11,28 +12,35 @@ var Role = bookshelf.Model.extend({
     tableName: 'roles'
 });
 
-module.exports = {
-    getAllAdmins: () => Admin.fetchAll({withRelated: ['role']}).then(function(models) {
-        return models.serialize();
-    }),
-    createAdmin: input => {
+class AdminM {
+    getAllAdmins() {
+        return Admin.fetchAll({withRelated: ['role']}).then(function(models) {
+            return models.serialize();
+        });
+    }
+
+    createAdmin(input: object) {
         if (input) {
             return new Admin(input).save().then(function(model) {
                 return model;
             });
         }
         return false;
-    },
-    deleteAdmin: id => {
+    }
+
+    deleteAdmin(id: number) {
         if (id) {
             return Admin.where('id', id).del();
         }
         return false;
-    },
-    updateAdmin: (id, input) => {
+    }
+
+    updateAdmin(id: number, input: object) {
         if (id) {
             return Admin.where('id', id).set(input).save(null, {method: 'update'});
         }
         return false;
     }
 }
+
+export const AdminModel = new AdminM()

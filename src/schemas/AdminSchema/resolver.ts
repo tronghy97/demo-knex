@@ -1,6 +1,6 @@
-const AdminModel = require('../../models/AdminModel');
+import { AdminModel } from '../../models/AdminModel';
 
-module.exports = {
+export const resolver = {
     Query: {
         getAllAdmins: () => AdminModel.getAllAdmins(),
     },
