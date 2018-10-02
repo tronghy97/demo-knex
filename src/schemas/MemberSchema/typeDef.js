@@ -7,6 +7,7 @@ module.exports = `
         createMember(input: MemberInput): Member
         deleteMember(id: ID!): Boolean
         updateMember(id: ID!, input: MemberInput): Boolean
+        insertMembers(input: [MemberInput]): [Member]
     }
 
     input MemberInput {

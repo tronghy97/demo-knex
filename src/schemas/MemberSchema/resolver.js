@@ -16,6 +16,9 @@ module.exports = {
                 return MemberModel.updateMember(id, input);
             }
             return false;
+        },
+        insertMembers(root, { input }) {
+            return MemberModel.insertMembers(input);
         }
     }
 }
