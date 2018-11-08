@@ -1,13 +1,12 @@
 module.exports = {
-  database: {
       development: {
       client: 'mysql',
       connection: {
         database: 'graphql',
         user:     'root',
-        password: 'root',
-        host: '127.0.0.1',
-        port: 8889
+        password: '01685394030',
+        host: 'localhost',
+        port: 3306
       },
       pool: {
         min: 2,
@@ -17,5 +16,4 @@ module.exports = {
         tableName: 'migrations'
       }
     },
-  }
 };

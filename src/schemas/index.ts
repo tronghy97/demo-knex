@@ -14,6 +14,11 @@ import {
     typeDef as Role
 } from './RoleSchema';
 
+import {
+    typeDef as Person,
+    resolver as PersonResolver
+} from './PersonSchema';
+
 const DefaultSchema = `
     type Query {
         _empty: String
@@ -24,5 +29,5 @@ const DefaultSchema = `
     }
 `;
 
-export const typeDefs = [DefaultSchema, Member, Role, Admin];
-export const resolvers = merge(MemberResolver, AdminResolver);
+export const typeDefs = [DefaultSchema, Member, Role, Admin, Person];
+export const resolvers = merge(MemberResolver, AdminResolver, PersonResolver);
