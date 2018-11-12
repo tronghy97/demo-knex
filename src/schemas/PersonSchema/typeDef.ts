@@ -13,7 +13,7 @@ export const typeDef = `
     input PersonInput{
         name: String,
         age: String,
-        gender: String
+        gender: String,
         role_name: String
     }
     

@@ -38,10 +38,22 @@ class Person {
     }
 
     createPerson(input: Object) {
-        if (input) {
-            return knex('persons').insert(input).then(function (result) {
-                return knex('persons').where('id', result[0]).first();
-            });
+        if(input){
+            return knex.transaction((trans) => {
+                return knex('roles').insert({name: input['role_name']}, 'id')
+                .transacting(trans)
+                .then(function(inserts){
+                    delete input['role_name'];
+                    input['role_id'] = inserts[0];
+                    console.log(inserts[0]);
+                    return knex('persons').insert(input).transacting(trans)
+                    .then(function(results){
+                        return knex('persons').select().where('id', results[0]).first().transacting(trans);
+                    });
+                })
+                .then(trans.commit)
+                .catch(trans.rollback);
+              })
         }
         return null;
     }
